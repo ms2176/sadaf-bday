@@ -1,0 +1,529 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff4f8">
+<title>A little birthday universe ✨</title>
+<style>
+:root{
+ --ink:#28203b;--muted:#6f667e;--pink:#ff6fae;--coral:#ff927d;--lilac:#a995ff;
+ --cream:#fffaf4;--line:rgba(56,39,76,.12);--shadow:0 20px 60px rgba(84,52,110,.13)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:ui-rounded,"Avenir Next",Avenir,system-ui,-apple-system,sans-serif;background:
+ radial-gradient(ellipse at 10% 5%,#ffe1ee 0,transparent 34%),
+ radial-gradient(ellipse at 90% 15%,#e9e4ff 0,transparent 30%),
+ radial-gradient(ellipse at 80% 90%,#fff0cf 0,transparent 32%),var(--cream);min-height:100vh;overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #6e58d7;outline-offset:4px}
+.wrap{width:min(1060px,92vw);margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;color:var(--muted);font-size:.88rem}
+.brand{font-weight:900;letter-spacing:-.04em;color:var(--ink)}
+.pill{border:1px solid var(--line);border-radius:999px;padding:8px 13px;background:#ffffff9c}
+.hero{min-height:76vh;display:grid;place-items:center;text-align:center;padding:45px 0 65px;position:relative}
+.hero-inner{max-width:760px;position:relative;z-index:1}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 15px;color:#8a4e87;font-weight:750;font-size:.8rem;box-shadow:0 8px 25px #7b52720d}
+h1{font-size:clamp(3.1rem,9vw,6.9rem);line-height:.91;letter-spacing:-.085em;margin:26px 0 22px;font-weight:950}
+.gradient{background:linear-gradient(110deg,#fb5d9c,#9d77ee 55%,#f29b69);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:clamp(1rem,2.5vw,1.23rem);line-height:1.75;color:var(--muted);max-width:610px;margin:0 auto}
+.hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{border:0;border-radius:16px;padding:14px 20px;font-weight:850;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:linear-gradient(120deg,#ff70ac,#a58aff);color:white;box-shadow:0 12px 28px #db7fbb45}
+.secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.spark{position:absolute;animation:float 5s ease-in-out infinite;user-select:none}
+.s1{top:16%;left:9%;font-size:2.1rem}.s2{top:22%;right:10%;font-size:2.7rem;animation-delay:-1s}.s3{bottom:17%;left:15%;font-size:1.8rem;animation-delay:-2s}.s4{bottom:20%;right:13%;font-size:2.1rem;animation-delay:-.7s}
+@keyframes float{50%{transform:translateY(-14px) rotate(9deg)}}
+section{padding:45px 0 70px}
+.section-head{text-align:center;margin-bottom:28px}
+.eyebrow{color:#a05d9c;font-size:.77rem;font-weight:900;text-transform:uppercase;letter-spacing:.17em}
+h2{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.065em;line-height:1.03;margin:12px 0}
+.sub{color:var(--muted);line-height:1.7;max-width:600px;margin:0 auto}
+.panel{background:#ffffffbd;border:1px solid #fff;box-shadow:var(--shadow);border-radius:30px;padding:clamp(18px,4vw,36px);backdrop-filter:blur(12px)}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mode-card{border:1px solid var(--line);border-radius:24px;padding:25px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;min-height:255px}
+.mode-card .emoji{font-size:2.3rem;margin-bottom:15px}
+.mode-card h3{font-size:1.35rem;margin:0 0 9px;letter-spacing:-.04em}
+.mode-card p{color:var(--muted);line-height:1.65;margin:0 0 20px;flex:1}
+.mode-card button{width:100%}
+.mode-card.soft{background:linear-gradient(145deg,#fff,#fff0f7)}
+.mode-card.chaos{background:linear-gradient(145deg,#fff,#f2edff)}
+.note{font-size:.82rem;color:var(--muted);text-align:center;margin:17px 0 0}
+.hidden{display:none!important}
+.back{display:inline-flex;border:0;background:transparent;color:#7756b5;font-weight:850;padding:8px 0;margin-bottom:14px}
+.mode-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.mode-title .emoji{font-size:2.4rem}
+.mode-title h2{margin:0;font-size:clamp(1.8rem,4vw,2.6rem)}
+.mode-title p{color:var(--muted);margin:6px 0 0}
+.emotions{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+.emotion{border:1px solid var(--line);border-radius:19px;background:#fff;padding:14px 8px;min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;font-weight:800;color:var(--ink);transition:transform .18s,border .18s}
+.emotion:hover{transform:translateY(-4px);border-color:#e5a1cb}
+.emotion span{font-size:1.8rem}.emotion small{font-size:.76rem}
+.message{margin-top:22px;border-radius:24px;background:linear-gradient(135deg,#fff0f7,#f3efff);padding:clamp(20px,4vw,32px);border:1px solid #fff;animation:appear .35s ease}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.message .big{font-size:2.1rem}.message h3{font-size:1.65rem;letter-spacing:-.045em;margin:9px 0}
+.message p{color:#5e536f;line-height:1.85;font-size:1.02rem;white-space:pre-line}
+.message .signature{font-weight:850;color:#8c5a9d;margin-top:20px}
+.message-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.tiny{font-size:.83rem;padding:10px 13px;border-radius:12px}
+.cameo{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;border:1px dashed #d8b2dd;border-radius:22px;padding:20px;background:#fff9ff}
+.cameo-icon{font-size:2.8rem;background:#f7e8ff;width:74px;height:74px;border-radius:22px;display:grid;place-items:center}
+.cameo h3{margin:0 0 6px}.cameo p{color:var(--muted);line-height:1.65;margin:0}
+.footer{text-align:center;padding:20px 0 55px;color:var(--muted);font-size:.85rem}
+.footer .heart{font-size:1.2rem}
+.confetti{position:fixed;top:-20px;z-index:10;pointer-events:none;animation:fall 2.7s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:.2}}
+
+
+.alleg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.alleg-actions button {
+  flex: 1;
+  min-width: 190px;
+}
+
+#no {
+  position: relative;
+}
+
+.gift-reveal {
+  text-align: center;
+  padding: 28px 12px;
+}
+
+.gift-reveal .gift-emoji {
+  font-size: 4rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.gift-reveal p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.letter {
+  line-height: 1.95 !important;
+}
+
+@media(max-width:680px) {
+  .alleg-actions button {
+    min-width: 100%;
+  }
+}
+@media(max-width:680px){.mode-grid{grid-template-columns:1fr}.emotions{grid-template-columns:repeat(2,1fr)}.emotion{min-height:86px}.hero{min-height:70vh}.s1{left:2%}.s2{right:3%}.s3{left:4%}.s4{right:5%}.cameo{grid-template-columns:1fr}.cameo-icon{width:60px;height:60px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav class="wrap"><div class="brand">a tiny internet surprise <span>✳</span></div><div class="pill">made with suspicious amounts of affection</div></nav>
+<main class="wrap">
+<section class="hero">
+ <span class="spark s1">✦</span><span class="spark s2">🎈</span><span class="spark s3">♡</span><span class="spark s4">✧</span>
+ <div class="hero-inner">
+  <div class="kicker">💌 a very important announcement</div>
+  <h1>PSA: I did<br><span class="gradient">not forget you.</span></h1>
+  <p class="lede">I was busy doing something deeply unserious and unnecessarily complicated: coding you a birthday surprise. Please accept this tiny corner of the internet as evidence.</p>
+  <div class="hero-buttons"><button class="btn primary" onclick="document.querySelector('#choose').scrollIntoView({behavior:'smooth'})">Open your surprise ✨</button><button class="btn secondary" onclick="party()">Press for birthday chaos 🎉</button></div>
+ </div>
+</section>
+<section id="choose">
+ <div class="section-head"><div class="eyebrow">choose your own adventure</div><h2>What kind of birthday are we having?</h2><p class="sub"> </p></div>
+ <div class="panel">
+  <div class="mode-grid">
+   <article class="mode-card soft"><div class="emoji">🌷</div><h3>The wholesome version</h3><p>Pick an emotion, there is a birthday message waiting for you on the other side.</p><button class="btn primary" onclick="openMode('soft')">Enter gently ♡</button></article>
+   <article class="mode-card chaos"><div class="emoji">🧌</div><h3>The freaky sonic version</h3><p>Allegations, questionable behaviour, the usual. Enter at your own risk.</p><button class="btn secondary" onclick="openMode('chaos')">I accept the allegations</button></article>
+  </div>
+  <p class="note">Disclaimer: all feelings are welcome here. Dramatic (maybe kuthu) music is optional (mandatory!).</p>
+ </div>
+</section>
+<section id="soft" class="hidden">
+ <button class="back" onclick="backToChoices()">← Back to the doors</button>
+ <div class="panel">
+  <div class="mode-title"><div class="emoji">🌷</div><div><h2>Your birthday, in every mood</h2><p>Tap whatever feels closest to your heart right now.</p></div></div>
+  <div class="emotions" id="emotionGrid"></div>
+  <div id="softMessage" class="message hidden" aria-live="polite"></div>
+ </div>
+</section>
+<section id="chaos" class="hidden">
+  <button class="back" onclick="backToChoices()">
+    ← Back to the doors
+  </button>
+
+  <div class="panel">
+    <div id="allegContent"></div>
+  </div>
+</section>
+</main>
+<footer class="footer wrap"><div class="heart">♡ ✧ ♡</div><p>hand-coded, slightly over-done and made for my beautiful Sadaf. </p><p></p></footer>
+<script>
+const emotions = [
+  {
+    id:'happy',
+    emoji:'☀️',
+    label:'Happy',
+    title:'PLEASE KEEP THIS ENERGY',
+    body:'Alhamdullilah! You deserve all the happiness in the world. I pray that this feeling stays for a long, long, long, long time. You deserve joy that feels easy and fulfilling and you shall receive that with abundance. Happy birthday, my dear sweet girl. ♡',
+    verse:'Surah Yunus, 10:58',
+    meaning:'In Allah\'s bounty and mercy, let people rejoice. These are better than what they accumulate.',
+    reflection:'Let yourself appreciate the happiness Allah has placed in your life.'
+  },
+  {
+    id:'sad',
+    emoji:'🌧️',
+    label:'Sad',
+    title:'A BAD DAY IS NOT A BAD LIFE',
+    body:'I\'m sorry if today/anyday feels heavy, you do not have to pretend otherwise! ever! Two truths can exist, the good and the bad. Take a breath, drink some water to surprise your liver (instead of pistachio latte), get cosy, and let it pass through you at its own pace. You are allowed to have soft days! I hope tomorrow feels kinder, and I hope you remember that you matter on the difficult days too. Happy birthday, love 🤍',
+    verse:'Surah Ash-Sharh, 94:5-6',
+    meaning:'With hardship comes ease. Indeed, with hardship comes ease.',
+    reflection:'May you find comfort in knowing that difficult seasons can give way to easier ones.'
+  },
+  {
+    id:'angry',
+    emoji:'🌋',
+    label:'Angry',
+    title:'PUT THE WORLD ON MUTE (OR ON FIRE TBH)',
+    body:'Unclench your jaw. Relax the body and drop your shoulders. Deal with the problem when you feel ready, and you do not have to solve everything right now! Shocking, I know. I hope whatever is annoying you becomes manageable, Inshallah. Happy birthday, you fiery little legend (pataka?). 🔥',
+    verse:'Surah Ali Imran, 3:134',
+    meaning:'This verse praises those who spend in prosperity and hardship, restrain their anger, and pardon people. Allah loves those who do good.',
+    reflection:'May you have the strength to respond with wisdom when anger rises.'
+  },
+  {
+    id:'anxious',
+    emoji:'🫧',
+    label:'Anxious',
+    title:'ONE THING AT A TIME',
+    body:'Come back to this moment for a second. Feel your feet, clothes on your skin, the floor. Do the box breathing method. Contrary to popular belief, you don’t have to be in  figure out everything now. Pick the next thing and do only that. May this year brings you more calm, more confidence in yourself, and people around whom you can exhale. You are doing your best and you are like super old now so Happy birthday, aunty. 🩵',
+    verse:'Surah Ar-Ra’d, 13:28',
+    meaning:'Those who believe find tranquillity in the remembrance of Allah. Surely, in Allah’s remembrance hearts find tranquillity.',
+    reflection:'May remembrance bring you steadiness when your thoughts feel overwhelming.'
+  },
+  {
+    id:'tired',
+    emoji:'🌙',
+    label:'Tired',
+    title:'REST IS ALLOWED',
+    body:'This is your official permission slip to stop being productive or feeling like you have to all the time. I am proud of you for slowing down especially this past year.  May this new year of your life gives you energy for the things you love and the wisdom to pause when you need it. Happy birthday, insomniac. 💤',
+    verse:'Surah Al-Baqarah, 2:153',
+    meaning:'Seek help through patience and prayer. Indeed, Allah is with those who are patient.',
+    reflection:'May you find strength in patience, prayer and taking life one day at a time.'
+  },
+  {
+    id:'excited',
+    emoji:'🎆',
+    label:'Excited',
+    title:'MAKE A LITTLE MAGIC',
+    body:'I LOVE THIS FOR YOU WOOOO. Whatever you are looking forward to, it will work out the way that is best for you and in the loveliest way possible. Let yourself be excited before you know every detail! I am rooting for you ALL THE TIME ALWAYS AND FOREVER and all the wonderful stuff that is waiting around the corner. Happy birthday. GO BE GREAT *you are already great*. 🎉',
+    verse:'Surah Ad-Duha, 93:11',
+    meaning:'And proclaim the blessings of your Lord.',
+    reflection:'May you recognise your blessings and treat it with abundance.'
+  },
+  {
+    id:'insecure',
+    emoji:'🪞',
+    label:'Insecure',
+    title:'PLEASE BE KIND TO MY FRIEND (you)',
+    body:'Excuse me. Speak to yourself the way you would speak to someone you love (me). You are allowed to be a work in progress and still be worthy of love, respect and all the good things. I hope you see more of what the people who care about you already see. Happy birthday, you are enough! and more!. 🌱',
+    verse:'Surah At-Tin, 95:4',
+    meaning:'We created the human being in the best form.',
+    reflection:'May this verse remind you of your dignity and encourage you to treat yourself with compassion.'
+  },
+  {
+    id:'grateful',
+    emoji:'🌼',
+    label:'Grateful',
+    title:'LET THE GOOD THINGS LAND',
+    body:'We love a grateful heart. Do not downplay! or immediately worry about what comes next. There will be thousands and hundreds of tiny moments this year working out in your favour always, thank you for being part of my life and for the memories we have already made. Here is to more of them. Happy birthday, gorg. 🌼',
+    verse:'Surah Ibrahim, 14:7',
+    meaning:'Allah declares that gratitude brings an increase in blessings, while ingratitude carries a grave warning.',
+    reflection:'May gratitude deepen your appreciation of the good already in your life.'
+  },
+  {
+    id:'overwhelmed',
+    emoji:'🌊',
+    label:'Overwhelmed',
+    title:'YOU ARE NOT ALONE',
+    body:'Everything can feel loud when too many things ask for you all at once. Try making the world smaller for a moment. You can ask for help. You can postpone something. You can take a break. Affirming what you already know. Inshallah, the year ahead has room for peace as well as ambition. Happy birthday, future lawyer. 🤍',
+    verse:'Surah Al-Baqarah, 2:286',
+    meaning:'Allah does not burden a soul beyond its capacity. The verse also teaches believers to seek forgiveness, mercy and help from Allah.',
+    reflection:'May you find comfort in turning to Allah and taking the next step at a manageable pace.'
+  }
+];
+const chaos = [
+ {id:'chaos1',emoji:'🧌',label:'Menace',title:'NEVER BEATING THE ALLEGATIONS',body:'The evidence is mounting. The witnesses are unreliable. The court has seen the screenshots. And yet, somehow, I still choose to keep you around. Happy birthday to the defendant, the judge, and the entire legal system. 🧑‍⚖️'},
+ {id:'chaos2',emoji:'🐒',label:'Monkey dodging',title:'DODGE THE MONKEYS. NOT THE GIFT.',body:'You have dodged every serious conversation with the agility of an Olympic athlete avoiding a flying monkey. Incredible footwork. Historic performance. Unfortunately, the birthday gift has located your coordinates. Claim it when you can. 🐒🎁'},
+ {id:'chaos3',emoji:'👹',label:'Freak behaviour',title:'THE FREAKY ALLEGATIONS ARE TRUE',body:'I tried to make you a normal birthday message. Then I remembered who I was making it for. Anyway, happy birthday. May your year be blessed, your food be delicious, your sleep be uninterrupted, and your search history remain between you and the Almighty. 😭'},
+ {id:'chaos4',emoji:'🧍',label:'Dry texter',title:'THIS IS YOUR PERFORMANCE REVIEW',body:'Communication: questionable. Vibes: occasionally immaculate. Ability to make me laugh: annoyingly high. Overall rating: retained, pending further investigation. Congratulations on another year of being a recurring character in my life. Happy birthday. 📋'},
+ {id:'chaos5',emoji:'🥹',label:'Secret softie',title:'CAUGHT HAVING FEELINGS',body:'Oh? You have emotions? You care about people? You are secretly a softie? This is a shocking development and I will be publishing my findings shortly. Jokes aside, I hope you always have people who make it safe to be soft. Happy birthday, you sentimental little creature. 🫶'},
+ {id:'chaos6',emoji:'🎁',label:'Gift inspector',title:'PLEASE READ THE TERMS & CONDITIONS',body:'Your gift is ready for collection. Redemption requires: being available at some point, not disappearing into another dimension, and acknowledging that the person who coded this deserves at least one dramatic reaction. No refunds. No exchanges. Happy birthday. 🎁'},
+ {id:'chaos7',emoji:'🛸',label:'Disappearing',title:'MISSING PERSONS DEPARTMENT',body:'Last seen: online. Last heard from: classified. Known aliases: busy, tired, will reply later. If found, please return this birthday human to their friends and remind them they are loved. Happy birthday from the department of people who notice when you vanish. 👽'},
+ {id:'chaos8',emoji:'💅',label:'Main character',title:'THE AUDACITY TO BE THIS ICONIC',body:'Another year older and still acting like the plot revolves around you. Honestly? On your birthday, it legally does. May the lighting be flattering, the outfit behave, the food arrive quickly, and every minor inconvenience be handled by someone else. Happy birthday, superstar. ✨'},
+ {id:'chaos9',emoji:'🧠',label:'Overthinking',title:'BRAIN: PLEASE CLOSE 47 TABS',body:'Not every thought needs a meeting, a slide deck and a five-year roadmap. Some things can simply happen. Please enjoy your birthday without conducting a full forensic analysis of the vibes. If you do overthink, at least hydrate while doing it. Happy birthday, CEO of mental gymnastics. 🧠'},
+ {id:'chaos10',emoji:'❤️',label:'Actually loved',title:'OKAY, NO JOKES FOR A SECOND',body:'I make fun of you because it is fun and because apparently I have chosen this very specific way of expressing affection. But I genuinely value you. You have a place in my life, in the memories I keep, and in the things I hope go well for you. I hope you feel cared for this year, even when we are busy or life gets weird. Happy birthday. I am glad you are here. ❤️'}
+];
+function makeGrid(items, target, kind) {
+  const el = document.getElementById(target);
+  if (!el) return;
+
+  el.innerHTML = items.map(x => `
+    <button class="emotion"
+      onclick="showMessage('${kind}','${x.id}')">
+      <span>${x.emoji}</span>
+      <small>${x.label}</small>
+    </button>
+  `).join('');
+}
+
+function showMessage(kind, id) {
+  if (kind !== 'soft') return;
+
+  const item = emotions.find(x => x.id === id);
+  const box = document.getElementById('softMessage');
+
+  if (!item || !box) return;
+
+  box.classList.remove('hidden');
+
+  box.innerHTML = `
+    <div class="big">${item.emoji}</div>
+    <h3>${item.title}</h3>
+    <p>${item.body}</p>
+
+    
+    <div class="signature">Happy birthday, always. ♡</div>
+
+    <div class="message-actions">
+ 
+      <button class="btn primary tiny" onclick="party()">
+        More confetti ✨
+      </button>
+    </div>
+  `;
+
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function copyMessage(kind, id) {
+  const item = emotions.find(x => x.id === id);
+  if (!item) return;
+
+  const text = `${item.title}
+
+${item.body}
+
+${item.verse}
+${item.quranText || item.meaning}
+
+${item.reflection}
+
+Happy birthday, always. ♡`;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text)
+      .then(() => alert('Message copied 💌'))
+      .catch(() => window.prompt('Copy your message:', text));
+  } else {
+    window.prompt('Copy your message:', text);
+  }
+}
+
+function copyMessage(kind,id){
+ const item=(kind==='soft'?emotions:chaos).find(x=>x.id===id);
+ const text=`${item.title}\n\n${item.body}\n\nHappy birthday, always. ♡`;
+ if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>alert('Message copied 💌')).catch(()=>window.prompt('Copy your message:',text));}
+ else window.prompt('Copy your message:',text);
+}
+
+function openMode(kind) {
+  document.getElementById('choose').classList.add('hidden');
+  document.getElementById('soft').classList.toggle('hidden', kind !== 'soft');
+  document.getElementById('chaos').classList.toggle('hidden', kind !== 'chaos');
+
+  if (kind === 'chaos') {
+    renderAllegations();
+  }
+
+  document.getElementById(kind).scrollIntoView({
+    behavior: 'smooth'
+  });
+
+  party();
+}
+
+function renderAllegations() {
+  const content = document.getElementById('allegContent');
+
+  content.innerHTML = `
+    <div class="gift-reveal">
+      <div class="gift-emoji">🧌⚖️</div>
+      <div class="eyebrow">OFFICIAL NOTICE</div>
+      <h2>Please imagine freaky sonic and welcome to the dark side.</h2>
+      <p>
+        Sadaf, you have been formally summoned to answer for
+        your crimes against my peace, your crazy behaviour,
+        and your refusal to acknowledge that you are, in fact, deeply appreciated and loved and insanely important to me.
+      </p>
+      <p>
+         I have decided to hear your side of the story (not really). This is your one opportunity
+        to accept the apology you are owed for having to put up with me. (I'm joking!, no choice)
+      </p>
+      <div class="alleg-actions">
+        <button class="btn primary" onclick="acceptGuilt()">
+          Guilty, I accept your (bizarre) apology 🙏
+        </button>
+        
+<button class="btn secondary" id="no"
+  onclick="dodgeAllegations()"
+  onmouseover="dodgeAllegations()"
+  ontouchstart="dodgeAllegations(event)">
+  Not guilty
+</button>
+
+    
+  `;
+}
+
+
+function dodgeAllegations(event) {
+  if (event) event.preventDefault();
+
+  const btn = document.getElementById('no');
+  if (!btn) return;
+
+  const replies = [
+    'OBJECTION. SUSPECT IS DODGING. 🐒',
+    'THE COURT SAYS NO 😭',
+    'STOP CLICKING.',
+    'NICE TRY, Sadaf.',
+    'Your lawyer has left the chat.',
+    'NOT AN OPTION, BESTIE 💀',
+    'The allegations remain.',
+    '404: NOT GUILTY NOT FOUND',
+    'CAUGHT IN 4K 📸',
+    'Stop trying. Accept your fate. 🙏'
+  ];
+
+  btn.textContent =
+    replies[Math.floor(Math.random() * replies.length)];
+
+  // Make the button escape around the screen
+  btn.style.position = 'fixed';
+  btn.style.zIndex = '9999';
+
+  const padding = 20;
+  const maxX = Math.max(
+    padding,
+    window.innerWidth - btn.offsetWidth - padding
+  );
+  const maxY = Math.max(
+    padding,
+    window.innerHeight - btn.offsetHeight - padding
+  );
+
+  btn.style.left =
+    Math.floor(Math.random() * (maxX - padding + 1) + padding) + 'px';
+
+  btn.style.top =
+    Math.floor(Math.random() * (maxY - padding + 1) + padding) + 'px';
+
+  btn.style.transform = 'rotate(' +
+    (Math.random() * 30 - 15) + 'deg)';
+
+  party();
+}
+
+
+function acceptGuilt() {
+  const content = document.getElementById('allegContent');
+
+  content.innerHTML = `
+    <article class="message">
+      <div class="big">🎂💌</div>
+      <div class="eyebrow">CASE CLOSED</div>
+      <h2>Happy birthday, Sadaf. ♡</h2>
+
+      <p class="letter">
+Okay, jokes aside, happy birthday QUEEEEN.
+
+I genuinely hope you know how much you mean to me. I wanted to make you something that would last a little longer than a birthday text, something you could come back to whenever you wanted and remember that there's a whole website for your special day. 
+
+Did not forget! Was coding and debugging, making it personalized. Thinking about what would make you laugh, what would make you roll your eyes, and what I wanted you to know even if I do not always say it properly.
+
+I value you as a person, you are so precious. I am so so so grateful for your thoughts, presence, nonsense included, laughter, girlhood, islamic values, ups and the insane downs. Thanks for always putting in the effort to make our bond exist and exist stronger.
+
+Through all those changing seasons, the bad summer and the lovely winter of Dubai, I hope you never question whether your existence matters to the people who care about you, me btw.
+
+For this new year of your life, I pray that Allah grants you barakah, peace, good health, knowledge, sincere connections, protection from what might be harm, and abundant opportunities that are good for you. I pray for courage and strength for you to keep going even when things feel uncertain.
+
+Can't wait to laugh a lot with you! Thank you for letting me experience this beautiful connection. I hope you feel appreciated, seen and loved in ways you want to be loved.
+
+You do not have to be "something-labeled" to be worth caring about. You are whole and enough, with all your moods and all your seasons. Every version is welcome. I like the mean one though.
+
+I care. I am glad you are in my life. May this year bring you closer to Allah, and closer to the life you are making dua for.
+
+Happy birthday, Sadaf. I love you loads. (wink)
+
+You are appreciated more than these allegations will ever admit. ❤️
+
+      </p>
+
+      <div class="signature">
+        With lots of love, duas and maybe some freaky questionable behaviour. ♡
+      </div>
+
+      <div class="message-actions">
+        <button class="btn primary" onclick="openGift()">
+          🎁 There's an actual gift?
+        </button>
+        <button class="btn secondary" onclick="party()">
+          Celebrate properly 🎉
+        </button>
+      </div>
+    </article>
+  `;
+
+  content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  party();
+}
+
+function openGift() {
+  const content = document.getElementById('allegContent');
+
+  content.innerHTML = `
+    <div class="message gift-reveal">
+      <div class="gift-emoji">🎁</div>
+      <h2>Your gift is waiting!</h2>
+      <p>
+        I have something for you outside this little corner of
+        the internet! DUH!. ❤️
+      </p>
+      <p class="note">
+        Gift redemption is subject to availability and the
+        defendant's ability to meet me. 
+      </p>
+      <button class="btn secondary" onclick="renderAllegations()">
+        ↩ Return to the allegations
+      </button>
+    </div>
+  `;
+
+  party();
+}
+
+function backToChoices(){
+ document.getElementById('soft').classList.add('hidden');document.getElementById('chaos').classList.add('hidden');
+ document.getElementById('choose').classList.remove('hidden');document.getElementById('choose').scrollIntoView({behavior:'smooth'});
+}
+function party(){
+ const bits=['🎉','✨','💖','🎈','🌸','⭐','🪩'];
+ for(let i=0;i<32;i++){const el=document.createElement('span');el.className='confetti';el.textContent=bits[Math.floor(Math.random()*bits.length)];el.style.left=Math.random()*100+'vw';el.style.animationDelay=Math.random()*.8+'s';el.style.fontSize=(14+Math.random()*18)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),3600);}
+}
+makeGrid(emotions, 'emotionGrid', 'soft');
+</script>
+</body>
+</html>
